@@ -155,6 +155,62 @@ html, body, #root {
   text-align: center;
 }
 
+/* ── Sound toggle ─────────────────────────────────── */
+.sound-toggle {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 10;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sound-toggle-icon {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.45);
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.sound-toggle--on .sound-toggle-icon {
+  color: rgba(255,255,255,0.85);
+}
+
+.sound-toggle-track {
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.15);
+  position: relative;
+  transition: background 0.2s;
+}
+
+.sound-toggle--on .sound-toggle-track {
+  background: var(--k-teal);
+}
+
+.sound-toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.sound-toggle--on .sound-toggle-knob {
+  transform: translateX(16px);
+  background: #fff;
+}
+
 /* ── Score ────────────────────────────────────────── */
 .score-display {
   position: absolute;

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import type { GameState, GateState } from '../types/game'
 import { generateEquation } from '../utils/generateEquation'
-import { playGrow, playShrink } from '../utils/sounds'
+import { playGrow, playShrink, setSoundEnabled, startAmbience, stopAmbience } from '../utils/sounds'
 import { BackgroundDots } from './BackgroundDots'
 import { SpeedParticles } from './SpeedParticles'
 import { GateBar } from './GateBar'
@@ -10,6 +10,7 @@ import { PlayerBlock, type Hint } from './PlayerBlock'
 import { EquationDisplay } from './EquationDisplay'
 import { ScoreDisplay } from './ScoreDisplay'
 import { ControlButtons } from './ControlButtons'
+import { SoundToggle } from './SoundToggle'
 import { GameOverScreen } from './GameOverScreen'
 import { StartScreen } from './StartScreen'
 
@@ -108,8 +109,26 @@ export function RunnerScreen() {
   const [gs, setGs]         = useState<GameState>(IDLE_STATE)
   const [shake, setShake]   = useState(false)
   const [flash, setFlash]   = useState(false)
+  const [soundOn, setSoundOn] = useState(true)
   const lastTimeRef         = useRef<number>(0)
   const prevScoreRef        = useRef<number>(0)
+  const phaseRef            = useRef(gs.phase)
+  phaseRef.current          = gs.phase
+
+  // Start / stop ambient music with game phase and sound toggle
+  useEffect(() => {
+    if (soundOn && gs.phase === 'playing') startAmbience()
+    else stopAmbience()
+  }, [gs.phase, soundOn])
+
+  const toggleSound = useCallback(() => {
+    setSoundOn(prev => {
+      const next = !prev
+      setSoundEnabled(next)
+      if (next && phaseRef.current === 'playing') startAmbience()
+      return next
+    })
+  }, [])
 
   // Trigger shake on game-over
   useEffect(() => {
@@ -211,6 +230,9 @@ export function RunnerScreen() {
       <div className="wall-strip wall-strip-left" />
       <div className="wall-strip wall-strip-right" />
       <div className="road-center-line" />
+
+      {/* Sound toggle */}
+      <SoundToggle enabled={soundOn} onToggle={toggleSound} />
 
       {/* Score */}
       <ScoreDisplay score={score} />
