@@ -318,6 +318,27 @@ html, body, #root {
 
 .overlay-btn:hover { filter: brightness(1.08); }
 
+/* ── Speed particles ──────────────────────────────── */
+.speed-particles {
+  position: absolute;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.speed-particle {
+  position: absolute;
+  border-radius: 99px;
+  transform: translateX(-50%);
+  opacity: 0.7;
+  animation: speed-streak linear forwards;
+}
+
+@keyframes speed-streak {
+  0%   { opacity: 0.75; transform: translateX(-50%) translateY(0px);   }
+  100% { opacity: 0;    transform: translateX(-50%) translateY(44px);  }
+}
+
 /* ── Background dots ──────────────────────────────── */
 .bg-dots {
   position: absolute;

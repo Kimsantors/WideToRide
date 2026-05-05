@@ -4,6 +4,7 @@ import type { GameState, GateState } from '../types/game'
 import { generateEquation } from '../utils/generateEquation'
 import { playGrow, playShrink } from '../utils/sounds'
 import { BackgroundDots } from './BackgroundDots'
+import { SpeedParticles } from './SpeedParticles'
 import { GateBar } from './GateBar'
 import { PlayerBlock, type Hint } from './PlayerBlock'
 import { EquationDisplay } from './EquationDisplay'
@@ -222,6 +223,9 @@ export function RunnerScreen() {
 
       {/* Player */}
       <PlayerBlock width={blockWidth} hint={hint} />
+
+      {/* Speed particles trailing below player */}
+      <SpeedParticles blockWidth={blockWidth} playing={phase === 'playing'} />
 
       {/* Block size indicator below player */}
       <div className="block-size-label">{blockWidth}</div>
