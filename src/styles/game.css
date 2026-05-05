@@ -320,9 +320,9 @@ html, body, #root {
 
 /* ── Player graphic tilt ──────────────────────────── */
 @keyframes player-tilt {
-  0%   { transform: rotate(-4deg) scale(1.04); }
-  50%  { transform: rotate( 4deg) scale(1.04); }
-  100% { transform: rotate(-4deg) scale(1.04); }
+  0%   { transform: rotate(-2deg) scale(1.02); }
+  50%  { transform: rotate( 2deg) scale(1.02); }
+  100% { transform: rotate(-2deg) scale(1.02); }
 }
 
 .player-img {
