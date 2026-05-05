@@ -39,7 +39,7 @@ export function PlayerBlock({ width, hint }: Props) {
       }}
     >
       <img
-        src={`/visuals/${width}.png`}
+        src={`${import.meta.env.BASE_URL}visuals/${width}.png`}
         alt={String(width)}
         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', pointerEvents: 'none' }}
       />
