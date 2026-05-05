@@ -318,6 +318,23 @@ html, body, #root {
 
 .overlay-btn:hover { filter: brightness(1.08); }
 
+/* ── Player graphic tilt ──────────────────────────── */
+@keyframes player-tilt {
+  0%   { transform: rotate(-4deg) scale(1.04); }
+  50%  { transform: rotate( 4deg) scale(1.04); }
+  100% { transform: rotate(-4deg) scale(1.04); }
+}
+
+.player-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  animation: player-tilt 0.9s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
 /* ── Speed particles ──────────────────────────────── */
 .speed-particles {
   position: absolute;

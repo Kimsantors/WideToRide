@@ -41,7 +41,7 @@ export function PlayerBlock({ width, hint }: Props) {
       <img
         src={`${import.meta.env.BASE_URL}visuals/${width}.png`}
         alt={String(width)}
-        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', pointerEvents: 'none' }}
+        className="player-img"
       />
     </motion.div>
   )
