@@ -3,7 +3,6 @@ import type { GateState } from '../types/game'
 
 interface Props {
   gate: GateState | null
-  blockWidth: number
 }
 
 const pop = {
@@ -13,7 +12,7 @@ const pop = {
   transition: { type: 'spring' as const, stiffness: 480, damping: 24 },
 }
 
-export function EquationDisplay({ gate, blockWidth }: Props) {
+export function EquationDisplay({ gate }: Props) {
   const rp = gate?.revealPhase ?? 0
 
   return (
@@ -44,20 +43,6 @@ export function EquationDisplay({ gate, blockWidth }: Props) {
         </AnimatePresence>
       </div>
 
-      {/* Show current block width as the player's live "answer" */}
-      <AnimatePresence>
-        {rp >= 1 && (
-          <motion.div
-            key="current"
-            className="eq-current"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            = {blockWidth}
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   )
 }

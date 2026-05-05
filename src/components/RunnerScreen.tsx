@@ -218,10 +218,13 @@ export function RunnerScreen() {
       {gates.map(gate => <GateBar key={gate.id} gate={gate} />)}
 
       {/* Equation */}
-      <EquationDisplay gate={activeGate} blockWidth={blockWidth} />
+      <EquationDisplay gate={activeGate} />
 
       {/* Player */}
       <PlayerBlock width={blockWidth} hint={hint} />
+
+      {/* Block size indicator below player */}
+      <div className="block-size-label">{blockWidth}</div>
 
       {/* Green flash on correct pass */}
       {flash && <div className="correct-flash" />}

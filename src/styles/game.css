@@ -94,6 +94,20 @@ html, body, #root {
   z-index: 3;
 }
 
+/* ── Block size label (below player) ─────────────── */
+.block-size-label {
+  position: absolute;
+  top: 516px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.06em;
+  pointer-events: none;
+  z-index: 5;
+}
+
 /* ── Equation display ─────────────────────────────── */
 .equation-display {
   position: absolute;
